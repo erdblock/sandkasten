@@ -51,14 +51,14 @@ node index.js
 ### `user`
 Save user information
 
-Name | Type
-- | - | -
-id | int | primary key
-username | string
-mail | string
-password | string (sha512)
-title | string
-subtitle | string
+| Name | Type |
+| - | - | - |
+| id | int | primary key |
+| username | string |
+| mail | string |
+| password | string (sha512) |
+| title | string |
+| subtitle | string |
 
 
 
@@ -66,29 +66,29 @@ subtitle | string
 ### `plugins`
 NPM-Name to ID relation.
 
-Name | Type
-- | - | -
-id | int | primary key
-npmName | text
+| Name | Type |
+| - | - | - |
+| id | int | primary key |
+| npmName | text |
 
 ### `pluginInstances`
 Instances of plugins.
 
-Name | Type
-- | - | -
-id | int | primary key
-pluginId | int
-userId | int
+| Name | Type |
+| - | - | - |
+| id | int | primary key |
+| pluginId | int |
+| userId | int |
 
 ### `pluginConfig`
 Key - Value Storage for plugin settings.
 
-Name | Type
-- | - | -
-userID | int | primary key
-instanceId | int | primary key
-key | text | primary key
-value | text
+| Name | Type |
+| - | - | - |
+| userID | int | primary key |
+| instanceId | int | primary key |
+| key | text | primary key |
+| value | text |
 
 
 
@@ -96,27 +96,27 @@ value | text
 ### `publishers`
 NPM-Name to ID relation.
 
-Name | Type
-- | - | -
-id | int | primary key
-npmName | text
+| Name | Type |
+| - | - | - |
+| id | int | primary key |
+| npmName | text |
 
 
 ### `publisherInstances`
 Instances of publishers.
 
-Name | Type
-- | - | -
-id | int | primary key
-publisherId | int
-userId | int
+| Name | Type |
+| - | - | - |
+| id | int | primary key |
+| publisherId | int |
+| userId | int |
 
 ### `publisherConfig`
 Key - Value Storage for publisher settings.
 
-Name | Type
-- | - | -
-userID | int | primary key
-publisherInstanceId | int | primary key
-key | text | primary key
-value | text
+| Name | Type |
+| - | - | - |
+| userID | int | primary key |
+| publisherInstanceId | int | primary key |
+| key | text | primary key |
+| value | text |
