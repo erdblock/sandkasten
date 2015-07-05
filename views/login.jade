@@ -1,0 +1,20 @@
+extends ./layout.jade
+
+block title
+	| Login
+
+block content
+	h1 Login
+	+flash
+	div(class="panel panel-primary maxWidth")
+		div(class="panel-heading") Login
+		div(class="panel-body")
+			form(role="form" action="/login" method="post")
+				div(class="form-group")
+					label Username:
+					input(type="text" name="username" class="form-control")
+				div(class="form-group")
+					label Password:
+					input(type="password" name="password" class="form-control")
+				div(class="form-group")
+					+primaryButton("Login")

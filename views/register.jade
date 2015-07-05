@@ -1,0 +1,28 @@
+extends ./layout.jade
+
+block title
+	| Register
+
+block content
+	h1 Register
+	+flash
+	div(class="panel panel-success maxWidth")
+		div(class="panel-heading") Register
+		div(class="panel-body")
+			form(role='form' action="/register" method="post")
+				div(class="form-group")
+					label(for="username") Username:
+					input(type='text' name="username" placeholder='username' class="form-control")
+				div(class="form-group")
+					label(for="password") Password:
+					input(type='password' name="password" placeholder='password' class="form-control")
+				div(class="form-group")
+					label(for="passwordValidate") Password:
+					input(type='password' name="passwordValidate" placeholder='retype password' class="form-control")
+				- if (config.registration.invites) {
+					div(class="form-group")
+						label(for="inviteCode") Invite code:
+						input(type='text' name="inviteCode" placeholder='Invite code' class="form-control")
+				- }
+				div
+				input(type="submit" value="Register", class="btn btn-success pull-right brMarginTop")

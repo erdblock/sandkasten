@@ -1,0 +1,18 @@
+extends ./view.jade
+
+block content
+	div(class="panel panel-primary")
+		div(class="panel-heading") Plugin Settings
+		div(class="panel-body")
+			form(role='form' method="post")
+				+inputs(activePluginInstance.locals.config)
+	div(class="panel panel-default")
+		div(class="panel-heading") Global Settings
+		div(class="panel-body")
+			form(role='form' method="post" action="./global")
+				+inputs(activePluginInstance.locals.globalPluginConfig)
+	div(class="panel panel-danger")
+		div(class="panel-heading") Delete
+		div(class="panel-body")
+			p Delete this instance of the plugin.
+			a(href="./delete" class="btn btn-danger") Delete

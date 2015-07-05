@@ -1,0 +1,17 @@
+title = user.username
+extends ../layout.jade
+
+block body
+	section(class="col-lg-offset-1 col-lg-3  col-sm-4")
+		- if(pluginInstances.length > 0){
+			h2 Plugins
+			ul(class="nav nav-pills nav-stacked")
+				+plugins
+		- }
+		h2 New Plugin
+		ul(class="nav nav-pills nav-stacked")
+			- for (var key in plugins) {
+				+navElement("/plugins/new/"+plugins[key].id, plugins[key].title)
+			- }
+	section(class="col-lg-7 col-sm-8")
+		block main

@@ -1,0 +1,14 @@
+extends ./layout.jade
+
+block title
+	| Welcome to sandkasten
+
+block content
+	div(class="jumbotron")
+		h1 Welcome to sandkasten
+		img(src="/png/icon.png" class="welcomeImage img-circle img-thumbnail")
+		- if(user == null){
+			div(class="welcomeButtons")
+				a(class="btn btn-success btn-lg" href="/register" role="button") Register
+				a(class="btn btn-primary btn-lg" href="/login" role="button") Login
+		- }

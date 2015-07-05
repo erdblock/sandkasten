@@ -1,0 +1,91 @@
+@import "../node_modules/bootstrap/less/bootstrap.less";
+@import "./fileinput.less";
+
+.navbar {
+	.glyphicon {
+		line-height: normal;
+	}
+	border-radius: 0 !important;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+}
+
+
+.profileImagePreview {
+	padding: 0.5em;
+	width: 10em;
+	height: 10em;
+}
+.coverImagePreview {
+	padding: 0.5em;
+	width: 20em;
+}
+
+.deleteImageButton {
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+
+.welcomeImage {
+	max-height:20em;
+	margin: 0 auto;
+	margin-top: 3em;
+	margin-bottom: 3em;
+	display:block;
+}
+
+.welcomeButtons {
+	margin: 0 auto;
+	padding-bottom: 1em;
+	width: 100%;
+
+	.btn {
+		width: 40%;
+		margin-left: 5%;
+		margin-right: 5%;
+		float: left;
+	}
+}
+
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.brMarginTop {
+	margin-top: 1em;
+}
+
+.maxWidth {
+	max-width: 30em;
+	margin: 0 auto;
+}
+
+@media (max-width: @screen-md-max) {
+	.nopadding {
+		.col-lg-6 {
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+@media (min-width: @screen-lg-min) {
+	.nopadding {
+		.col-lg-6:first-child {
+			padding-left: 0;
+			margin-left: 0;
+		}
+		.col-lg-6:last-child {
+			padding-right: 0;
+			margin-right: 0;
+		}
+	}
+}

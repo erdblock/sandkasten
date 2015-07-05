@@ -1,0 +1,17 @@
+extends ./layout.jade
+
+block main
+	h1 Delete account
+	+flash
+	form(role='form' method="post")
+		div(class="panel panel-danger")
+			div(class="panel-heading")
+				span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
+				span(class="sr-only") Info:
+				| 
+				| Do you really want to delete this account?
+			div(class="panel-body")
+					div(class="form-group")
+						label Username:
+						input(type="text" name="username" class="form-control" placeholder="Confirm deletion by entering you username.")
+					input(type="Submit" value="Delete" class="btn btn-danger")

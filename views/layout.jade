@@ -1,0 +1,146 @@
+mixin plugins
+	- for (var i in pluginInstances){
+		- var instance = pluginInstances[i]
+		+navElement("/plugins/"+instance.id+"/", instance.title)
+	- }
+mixin publishers
+	- for (var i in publisherInstances){
+		- var instance = publisherInstances[i]
+		+navElement("/publishers/"+instance.id+"/", instance.title)
+	- }
+
+mixin flash
+	- if(flash) {
+		div(id="flashmsg")
+			while message = flash.shift()
+				div(class='alert alert-' + message.type, role="alert")
+					span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
+					span(class="sr-only") Error:
+					| 
+					| #{message.message}
+	- }
+
+mixin navElement(url, text)
+	li(class=(req.originalUrl.indexOf(url) > -1 ? "active" : ""))
+		a(href=url) #{text}
+
+mixin navElementG(url, text, glyphicon)
+	li(class=(req.originalUrl.indexOf(url) > -1 ? "active" : ""))
+		a(href=url)
+			span(class="glyphicon pull-right glyphicon-"+glyphicon, aria-hidden="true")
+			| #{text}
+
+mixin navUser
+	+navElement("/user/about", "About Me")
+	+navElement("/user/security", "Security")
+	+navElement("/user/delete", "Delete account")
+
+mixin primaryButton(value)
+	input(type="submit" value=value, class="btn btn-primary pull-right")
+
+mixin inputs(configArray)
+	- for (var key in configArray) {
+		- var config = configArray[key]
+		div(class="form-group")
+			label #{config.label}
+			- if(config.type=="textarea"){
+				br
+				- var rows = config.value.split("\r\n").length
+				- if (rows < 4) rows = 4
+				- else if (rows > 25) rows = 25
+				textarea(rows=rows name=key class="form-control") #{config.value}
+			- } else if (config.type=="checkbox") {
+				- if (config.value == 1) {
+					input(type=config.type name=key value="1" class="form-control" checked)
+				- } else {
+					input(type=config.type name=key value="1" class="form-control")
+				- }
+			- } else {
+				input(type=config.type name=key value=config.value class="form-control")
+			- }
+	- }
+	+primaryButton("Save")
+
+doctype html
+html(lang="en")
+	head
+		title
+			block title
+		link(href="/css/style.css", rel="stylesheet")
+		script(src="/js/jquery.min.js")
+		script(src="/js/bootstrap.min.js")
+		meta(name="viewport", content="width=device-width")
+		block head
+	body
+		nav(class="navbar navbar-default")
+			div(class="container-fluid")
+				div(class="navbar-header")
+					button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+						span(class="sr-only") Toggle navigation
+						span(class="icon-bar")
+						span(class="icon-bar")
+						span(class="icon-bar")
+					a(class="navbar-brand" href="/") Sandkasten
+				div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+					- if(user){
+						ul(class="nav navbar-nav")
+							li(class="dropdown")
+								a(href="/user/about" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
+									| Account
+									span(class="caret nav-plugins-caret" style="visibility: hidden")
+								ul(class="dropdown-menu" role="menu")
+									+navUser
+							- if(user.erdblock.locals.priorityCache.length > 0){
+								li(class="dropdown")
+									a(href="/plugins" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
+										| Plugins
+										span(class="caret nav-plugins-caret" style="visibility: hidden")
+									ul(class="dropdown-menu" role="menu")
+										+plugins
+							- } else {
+								li
+									a(href="/plugins/") Plugins
+							- }
+							- if(publisherInstances.length > 0){
+								li(class="dropdown")
+									a(href="/publishers" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false")
+										| Publishers
+										span(class="caret nav-plugins-caret" style="visibility: hidden")
+									ul(class="dropdown-menu" role="menu")
+										+publishers
+							- } else {
+								li
+									a(href="/publishers/") Publishers
+							- }
+							li
+								a(href="/preview/"+user.username+"/") Preview
+						ul(class="nav navbar-nav navbar-right")
+							+navElement("/logout", "Logout")
+					- } else {
+						- if (config.registration.enabled) {
+							ul(class="nav navbar-nav")
+								+navElement("/register", "Register")
+						- }
+						ul(class="nav navbar-nav navbar-right")
+							+navElement("/login", "Login")
+					- }
+					block navbar
+		div(class="container visible-xs")
+			noscript
+				div(class="alert alert-danger" role="alert")
+					span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
+					span(class="sr-only") Warning:
+					| 
+					| This side requires Javascript.
+		block body
+			div(class="container")
+				block content
+		script.
+				window.onload = function(){
+					$(".dropdown-toggle").each(function() {
+						this.href="#"
+					});
+					$(".nav-plugins-caret").each(function() {
+						this.style.visibility="visible"
+					});
+				}

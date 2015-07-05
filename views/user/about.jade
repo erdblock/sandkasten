@@ -1,0 +1,69 @@
+extends ./layout.jade
+
+block head
+	script(src="/js/fileinput.min.js")
+
+block main
+	h1 About Me
+	+flash
+	div(class="panel panel-primary")
+		div(class="panel-heading") About Me
+		div(class="panel-body")
+			form(role="form" method="post")
+				div(class="form-group")
+					label Title:
+					input(type="text" name="title" class="form-control" value=user.title)
+				div(class="form-group")
+					label Subtitle:
+					input(type="text" name="subtitle" class="form-control" value=user.subtitle)
+				+primaryButton("Save")
+	div(class="container-fluid nopadding")
+		div(class="col-lg-6")
+			form(role="form" method="post" enctype="multipart/form-data")
+				div(class="panel panel-primary")
+					div(class="panel-heading") Profile Image
+					div(class="panel-body")
+						div(class="form-group")
+							input(id="profileImagePath" name="profileImagePath" type="file" data-preview-file-type="image" data-show-preview="false")
+							script.
+								$("#profileImagePath").fileinput({
+									minFileCount: 0,
+									maxFileCount: 1,
+									showUpload: false,
+									showRemove: false,
+									fileTypeSettings: ['image']
+									})
+						- if (user.profileImagePath){
+							div(class="form-group")
+								img(class="profileImagePreview img-circle img-thumbnail" src="/assets/"+user.profileImagePath)
+						- }
+						div(class="form-group")
+							- if (user.profileImagePath){
+								input(type="submit" name="deleteProfileImage" value="Delete", class="btn btn-danger")
+							- }
+							+primaryButton("Save")
+		div(class="col-lg-6")
+			form(role="form" method="post" enctype="multipart/form-data")
+				div(class="panel panel-primary")
+					div(class="panel-heading") Cover Image
+					div(class="panel-body")
+						div(class="form-group")
+							input(id="coverImagePath" name="coverImagePath" type="file" data-preview-file-type="image" data-show-preview="false")
+							script.
+								$("#coverImagePath").fileinput({
+									minFileCount: 0,
+									maxFileCount: 1,
+									showUpload: false,
+									showRemove: false,
+									fileTypeSettings: ['image']
+									})
+						div(class="form-group")
+							- if (user.coverImagePath){
+								div(class="form-group")
+									img(class="coverImagePreview img-thumbnail" src="/assets/"+user.coverImagePath)
+							- }
+						div(class="form-group")
+							- if (user.coverImagePath){
+								input(type="submit" name="deleteCoverImage" value="Delete", class="btn btn-danger")
+							- }
+							+primaryButton("Save")

@@ -1,0 +1,39 @@
+{
+	"name": "demo-erdblock",
+	"version": "0.0.2",
+	"description": "Erdblock is a modular personal webpage, which stays up to date automatically.",
+	"private": true,
+	"dependencies": {
+		"jquery": "x",
+		"express": "~4.12.2",
+		"jade": "x",
+		"body-parser": "x",
+		"express-less": "x",
+		"less": "x",
+		"mysql": "x",
+		"flash": "x",
+		"cookie-parser": "x",
+		"is_js": "x",
+		"marked": "x",
+		"async": "x",
+		"multer": "x",
+		"express-session": "x",
+		"erdblock": "git+ssh://git@github.com:erdblock/erdblock.git",
+		"erdblock-github": "git+ssh://git@github.com:erdblock/erdblock-github.git",
+		"erdblock-itunes": "git+ssh://git@github.com:erdblock/erdblock-itunes.git",
+		"erdblock-markdown": "git+ssh://git@github.com:erdblock/erdblock-markdown.git",
+		"erdblock-rss": "git+ssh://git@github.com:erdblock/erdblock-rss.git",
+		"erdblock-stackexchange": "git+ssh://git@github.com:erdblock/erdblock-stackexchange.git",
+		"erdblock-twitter": "git+ssh://git@github.com:erdblock/erdblock-twitter.git",
+		"erdblock-website": "git+ssh://git@github.com:erdblock/erdblock-website.git",
+		"sandkasten-port": "git+ssh://git@github.com:erdblock/sandkasten-port.git",
+		"bootstrap": "x",
+		"connect-redis": "x"
+	},
+	"scripts": {
+		"test": "npm run test-install && npm run test-flow",
+		"test-install": "npm install",
+		"test-flow": "flow check"
+	},
+	"main": "index.js"
+}

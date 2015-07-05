@@ -1,0 +1,9 @@
+extends ./layout.jade
+
+block title
+	| #{activePublisherInstance.title }
+
+block main
+	h1 #{activePublisherInstance.title}
+	+flash
+	block content

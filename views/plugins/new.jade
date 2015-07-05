@@ -1,0 +1,18 @@
+extends ./layout.jade
+
+block title
+	| New Plugin (#{newPlugin.locals.title})
+
+block main
+	h1 #{newPlugin.locals.title}
+	- if(readme){
+		div(class="panel panel-info")
+			div(class="panel-heading") #{newPlugin.locals.title}
+			div(class="panel-body") !{readme}
+	- }
+	div(class="panel panel-primary")
+		div(class="panel-heading") Create
+		div(class="panel-body")
+			p Do you really want to create this plugin?
+			form(role="form" method="post")
+				+primaryButton("Create")

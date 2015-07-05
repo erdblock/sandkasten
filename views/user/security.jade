@@ -1,0 +1,15 @@
+extends ./layout.jade
+
+block main
+	h1 Security
+	+flash
+	div(class="panel panel-primary")
+		div(class="panel-heading") Change Password
+		div(class="panel-body")
+			form(role="form" method="post")
+				div(class="form-group")
+					label Password:
+					input(type="password" name="password" placeholder='Password' class="form-control")
+				div(class="form-group")
+					input(type="password" name="passwordRe" placeholder='Retype password' class="form-control")
+				+primaryButton("Save")

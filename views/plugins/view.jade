@@ -1,0 +1,10 @@
+extends ./layout.jade
+
+block title
+	| #{activePluginInstance.locals.title }
+
+block main
+	h1 #{activePluginInstance.locals.title}
+	p #{activePluginInstance.locals.description}
+	+flash
+	block content
