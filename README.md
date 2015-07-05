@@ -52,7 +52,7 @@ node index.js
 Save user information
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | id | int | primary key |
 | username | string |
 | mail | string |
@@ -67,7 +67,7 @@ Save user information
 NPM-Name to ID relation.
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | id | int | primary key |
 | npmName | text |
 
@@ -75,7 +75,7 @@ NPM-Name to ID relation.
 Instances of plugins.
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | id | int | primary key |
 | pluginId | int |
 | userId | int |
@@ -97,7 +97,7 @@ Key - Value Storage for plugin settings.
 NPM-Name to ID relation.
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | id | int | primary key |
 | npmName | text |
 
@@ -106,7 +106,7 @@ NPM-Name to ID relation.
 Instances of publishers.
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | id | int | primary key |
 | publisherId | int |
 | userId | int |
@@ -115,7 +115,7 @@ Instances of publishers.
 Key - Value Storage for publisher settings.
 
 | Name | Type |
-| - | - | - |
+| --- | --- | --- |
 | userID | int | primary key |
 | publisherInstanceId | int | primary key |
 | key | text | primary key |
